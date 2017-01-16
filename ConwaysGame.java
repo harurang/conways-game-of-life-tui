@@ -141,7 +141,7 @@ public class ConwaysGame {
       for(int j = 1; j < generation1[i].length; j++) {
         liveNeighbors = getLiveNeighbors(i, j, generation1);
         // any live cell that does not have 2 or 3 neighbors dies
-        if(generation1[i][j] == 1 && (liveNeighbors != 2 || liveNeighbors != 3))
+        if(generation1[i][j] == 1 && (liveNeighbors != 2 && liveNeighbors != 3))
           generation2[i][j] = 0;
         // any dead cell with three neighbors comes to life
         else if(generation1[i][j] == 0 && (liveNeighbors == 3))
