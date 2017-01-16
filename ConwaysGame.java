@@ -83,51 +83,34 @@ public class ConwaysGame {
   */
   public static int getLiveNeighbors(int x, int y, int[][] generation) {
     int liveCount = 0;
-    // if no edge case
-    if(x != 0 && y != 0 && x != generation.length-1 && y != generation[0].length-1) {
-      // loop through each row surrounding cell
-      for(int i = (-1+x); i < 2+x; i++) {
-    			//loop through column surrounding cell
-           for(int j = (-1+y); j < 2+y; j++) {
-    				//if index does not equal coordinate (x,y)
-            if(i != x || j != y)
-    					if(generation[i][j] == 1)
-    						liveCount++;
-        		}
-      }
-    // if edge case
-    } else {
-      int top = x-1;
-      int bottom = x+1;
-      int left = y-1;
-      int right = y+1;
+    int top = x-1;
+    int bottom = x+1;
+    int left = y-1;
+    int right = y+1;
 
-      // top case
-      if (x == 0) {
-          top = generation.length-1;
-      // bottom case
-    } else if (x == generation.length-1) {
-          bottom = 0;
-      }
-      // left case
-      if (y == 0) {
-          left = generation[0].length-1;
-      // right edge case
-    } else if (y == generation[0].length-1) {
-          right = 0;
-      }
+    // top case
+    if (x == 0)
+        top = generation.length-1;
+    // bottom case
+		else if (x == generation.length-1)
+        bottom = 0;
+    // left case
+    if (y == 0)
+        left = generation[0].length-1;
+    // right edge case
+  	else if (y == generation[0].length-1)
+        right = 0;
 
-      // neighbors to consider based on edge cases
-      int[][] neighbors =
-      { {top, left}, {top, y}, {top, right}, {x, left}, {x, right}, {bottom, left}, {bottom, y}, {bottom, right} };
+    // neighbors to consider
+    int[][] neighbors =
+    { {top, left}, {top, y}, {top, right}, {x, left}, {x, right}, {bottom, left}, {bottom, y}, {bottom, right} };
 
-      // assess each neighbor stored in neighbors
-      for (int i = 0; i < neighbors.length; i++) {
-        if (generation[neighbors[i][0]][neighbors[i][1]] == 1)
-            liveCount++;
-      }
+    // assess each neighbor stored in neighbors
+    for (int i = 0; i < neighbors.length; i++) {
+      if (generation[neighbors[i][0]][neighbors[i][1]] == 1)
+          liveCount++;
     }
-    return liveCount;
+  	return liveCount;
   }
 
   /*
