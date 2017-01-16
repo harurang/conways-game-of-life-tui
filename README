@@ -1,2 +1,7 @@
 This program mimics Conway's Game of Life in a text user interface (tui).
 The rules of the game can be found here: https://en.wikipedia.org/wiki/Conway's_Game_of_Life
+
+Compilation:
+This program requires a file that represents the grid of the program as a command line argument. 
+
+i.e. java ConwaysGame grid.txt
